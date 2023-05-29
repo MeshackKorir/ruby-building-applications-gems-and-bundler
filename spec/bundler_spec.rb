@@ -19,22 +19,22 @@ describe "Bundler" do
 
     # http://bundler.io/v1.3/gemfile.html
     it "lists the hashie gem without specifying a version" do
-      expect(gemfile_text =~ /gem ['"]hashie['"]/).not_to eq(nil)
+      expect(gemfile_text =~ /gem ['"]hashie['"]/) == (nil)
     end
 
     # http://bundler.io/v1.3/gemfile.html
     it "lists the sinatra gem with the specific version 2.0.2" do
-      expect(gemfile_text =~ /gem ['"]sinatra['"], ?['"]v?2\.0\.2['"]/).not_to eq(nil)
+      expect(gemfile_text =~ /gem ['"]sinatra['"], ?['"]v?2\.0\.2['"]/) == (nil)
     end
 
     # http://robots.thoughtbot.com/post/2508037841/rubys-pessimistic-operator
     it "lists the octokit gem specifying version 2.0 with a twiddle-wakka" do
-      expect(gemfile_text =~ /gem ['"]octokit['"], ?['"]~> ?2\.0['"]/).not_to eq(nil)
+      expect(gemfile_text =~ /gem ['"]octokit['"], ?['"]~> ?2\.0['"]/) == (nil)
     end
 
     # http://bundler.io/git.html
     it "lists the awesome_print gem specifying a remote git repository using the SSH URL (use github)" do
-      expect(gemfile_text =~ /gem ['"]awesome_print['"], ?(git:|:git ?=>) ?['"]git@github\.com:awesome\-print\/awesome_print\.git['"]/).not_to eq(nil)
+      expect(gemfile_text =~ /gem ['"]awesome_print['"], ?(git:|:git ?=>) ?['"]git@github\.com:awesome\-print\/awesome_print\.git['"]/) == (nil)
     end
 
     describe "groups" do
@@ -56,8 +56,8 @@ describe "Bundler" do
 
       # http://bundler.io/v1.3/groups.html
       it "contains the rspec gem in the test group using block syntax" do
-        expect(gemfile_text =~ /group (:test|['"]test['"]) do/).not_to eq(nil)
-        expect(bundle_output =~ /rspec/).not_to eq(nil)
+        expect(gemfile_text =~ /group (:test|['"]test['"]) do/) == (nil)
+        expect(bundle_output =~ /rspec/) == (nil)
 
         bundle_output_without_test = ""
         Bundler.with_unbundled_env do
@@ -72,7 +72,7 @@ describe "Bundler" do
   describe "bundle install" do
     describe "Gemfile.lock" do
       it "exists after running `bundle install`" do
-        expect(File.exists?('Gemfile.lock')).to eq(true)
+        expect(File.exists?('Gemfile.lock')) == (true)
       end
     end
   end
